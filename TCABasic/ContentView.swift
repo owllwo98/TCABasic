@@ -6,19 +6,49 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+
+struct ContentFeature {
+    
+    struct State: Equatable {
+        var count = 0
+    }
+    
+    enum Action {
+        case add
+        case minus
+    }
+    
+    func reduce(state: inout State, action: Action) {
+        switch action {
+        case .add:
+            state.count += 1
+        case .minus:
+            state.count -= 1
+        }
+    }
+}
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("0")
+                .font(.largeTitle)
+            HStack {
+                Button("-") {
+                    
+                }
+                
+                Button("+") {
+                    
+                }
+            }
+            .buttonStyle(.borderedProminent)
         }
         .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
