@@ -21,12 +21,17 @@ struct ContentFeature {
         var count = 0
     }
     
-    enum Action {
+    // BindableAction
+    enum Action: BindableAction {
         case add
         case minus
+        case binding(BindingAction<State>)
     }
     
     var body: some ReducerOf<Self> {
+        
+        BindingReducer()
+        
         Reduce { state, action in
             switch action {
             case .add:
@@ -35,18 +40,20 @@ struct ContentFeature {
             case .minus:
                 state.count -= 1
                 return .none
+            case .binding:
+                return .none
             }
         }
     }
     
-    func reduce(state: inout State, action: Action) {
-        switch action {
-        case .add:
-            state.count += 1
-        case .minus:
-            state.count -= 1
-        }
-    }
+//    func reduce(state: inout State, action: Action) {
+//        switch action {
+//        case .add:
+//            state.count += 1
+//        case .minus:
+//            state.count -= 1
+//        }
+//    }
 }
 
 struct ContentView: View {
