@@ -46,10 +46,10 @@ struct TextCountStore {
     }
 }
 
-#Preview {
-    TextCountView(
-        store: Store(initialState: TextCountStore.State()) {
-            TextCountStore()
-        }
-    )
-}
+//#Preview {
+//    TextCountView(
+//        store: Store(initialState: TextCountStore.State()) {
+//            TextCountStore()
+//        }
+//    )
+//}
