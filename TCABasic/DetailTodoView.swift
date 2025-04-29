@@ -6,13 +6,38 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct DetailTodoView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+@Reducer
+struct DetailTodoFeature {
+    @ObservableState
+    struct State {
+        var myTodo: MyTodo
+    }
+    
+    enum Action {
+        
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            return .none
+        }
     }
 }
 
-#Preview {
-    DetailTodoView()
+struct DetailTodoView: View {
+    
+    let store: StoreOf<DetailTodoFeature>
+    
+    var body: some View {
+        HStack {
+            Image(systemName: store.myTodo.isDone ? "checkmark.circle.fill" : "circle")
+            Text(store.myTodo.content)
+        }
+    }
 }
+
+//#Preview {
+//    DetailTodoView()
+//}
