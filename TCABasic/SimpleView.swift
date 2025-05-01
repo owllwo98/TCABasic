@@ -59,6 +59,6 @@ struct SimpleView: View {
     }
 }
 
-#Preview {
-    SimpleView(store: Store(initialState: SimpleFeature.State(), reducer: { SimpleFeature() }))
-}
+//#Preview {
+//    SimpleView(store: Store(initialState: SimpleFeature.State(), reducer: { SimpleFeature() }))
+//}
